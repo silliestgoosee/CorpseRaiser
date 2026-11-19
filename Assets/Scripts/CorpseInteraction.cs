@@ -14,7 +14,17 @@ public class CorpseInteraction : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        
+
+        // Check whether the Necromancer was successfully found.
+        if (player != null)
+        {
+            Debug.Log("Player found: " + player.name);
+        }
+        else
+        {
+            Debug.LogError("No GameObject with the Player tag was found!");
+        }
+
         // gets the ResurrectionRitual attached to corpse
         resurrectionRitual = GetComponent<ResurrectionRitual>();
     }
@@ -35,6 +45,7 @@ public class CorpseInteraction : MonoBehaviour
         // if in range close and E is pressed, begin the interaction
         if (playerInRange && Keyboard.current.eKey.wasPressedThisFrame)
         {
+            Debug.Log("E pressed while in range!");
             resurrectionRitual.StartRitual();
         }
     }

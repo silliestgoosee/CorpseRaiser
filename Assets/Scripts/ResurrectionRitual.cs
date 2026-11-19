@@ -5,6 +5,8 @@ public class ResurrectionRitual : MonoBehaviour
 {
     private bool ritualActive = false;
     private bool waitingForInput = false;
+    private Key currentQTEKey;
+    private CorpseState corpseState;
 
     // parent object containing all QTE points for this sigil
     [SerializeField] private Transform ritualPoints;
@@ -19,18 +21,25 @@ public class ResurrectionRitual : MonoBehaviour
     // the point the marker is currently moving towards
     private int targetPointIndex = 1;
 
+
+    void Start()
+    {
+        corpseState = GetComponent<CorpseState>();
+    }
+
     void Update()
     {
         // don't check for ritual input unless a ritual is active
         if (!ritualActive)
             return;
         
-        // If we have reached a point, wait for the player's QTE input.
+        // if we have reached a point, wait for the player's QTE input
         if (waitingForInput)
         {
-            // TEMP: Space is being used as our QTE button.
-            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            // checks whether the randomly chosen QTE button was pressed
+            if (Keyboard.current[currentQTEKey].wasPressedThisFrame)
             {
+                Debug.Log("Correct input!");
                 CompletePoint();
             }
             return;
@@ -43,20 +52,16 @@ public class ResurrectionRitual : MonoBehaviour
         ritualMarker.position = Vector3.MoveTowards(ritualMarker.position, targetPoint.position, markerSpeed * Time.deltaTime
         );
         
-        // has the marker has arrived at the point
         if (Vector3.Distance(ritualMarker.position, targetPoint.position) < 1f)
         {
-            // snap onto the point
+            // snap the marker exactly onto the QTE point.
             ritualMarker.position = targetPoint.position;
 
-            // stop movement until the player completes the QTE
+            // stop the marker until the correct input is pressed
             waitingForInput = true;
 
-            Debug.Log(
-                "Reached ritual point " +
-                (targetPointIndex + 1) +
-                ". Press SPACE!"
-            );
+            // choose the button required for this QTE
+            GenerateQTE();
         }
     }
     
@@ -89,8 +94,27 @@ public class ResurrectionRitual : MonoBehaviour
         // Point2 is the first destination
         targetPointIndex = 1;
         
-        Debug.Log("Resurrection ritual started!");
+        // Debug.Log("Resurrection ritual started!");
     }
+    
+    
+    private void GenerateQTE()
+    {
+        //  possible buttons that can appear during the ritual
+        Key[] possibleKeys =
+        {
+            Key.W,
+            Key.A,
+            Key.S,
+            Key.D
+        };
+
+        // chooses a button randomly from the list
+        currentQTEKey = possibleKeys[Random.Range(0, possibleKeys.Length)];
+
+        Debug.Log("QTE: Press " + currentQTEKey);
+    }
+    
     
     private void CompletePoint()
     {
@@ -101,13 +125,21 @@ public class ResurrectionRitual : MonoBehaviour
         );
 
         waitingForInput = false;
-        // move to the next ritual point.
-        targetPointIndex++;
-        
-        // if there are no more points, the ritual is complete.
-        if (targetPointIndex >= totalStages)
+
+        // if the marker has returned to Point1, the full sigil is complete
+        if (targetPointIndex == 0)
         {
             CompleteRitual();
+            return;
+        }
+
+        // move to the next ritual point.
+        targetPointIndex++;
+
+        // after reaching the final point, loop back to Point1
+        if (targetPointIndex >= totalStages)
+        {
+            targetPointIndex = 0;
         }
     }
 
@@ -116,6 +148,7 @@ public class ResurrectionRitual : MonoBehaviour
     {
         ritualActive = false;
         waitingForInput = false;
+        corpseState.Resurrect();
         
         ritualCanvas.SetActive(false);
         Debug.Log("RESURRECTION SUCCESSFUL!");
