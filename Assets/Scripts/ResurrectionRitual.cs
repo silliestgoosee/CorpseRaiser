@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class ResurrectionRitual : MonoBehaviour
 {
+    private DialogueManager dialogueManager;
+    
     private bool ritualActive = false;
     private bool waitingForInput = false;
     private Key currentQTEKey;
@@ -10,6 +13,7 @@ public class ResurrectionRitual : MonoBehaviour
 
     // parent object containing all QTE points for this sigil
     [SerializeField] private Transform ritualPoints;
+    [SerializeField] private TMP_Text QTEPrompt;
 
     // stores how many QTE points the sigil has
     private int totalStages;
@@ -25,6 +29,7 @@ public class ResurrectionRitual : MonoBehaviour
     void Start()
     {
         corpseState = GetComponent<CorpseState>();
+        dialogueManager = FindFirstObjectByType<DialogueManager>();
     }
 
     void Update()
@@ -59,9 +64,6 @@ public class ResurrectionRitual : MonoBehaviour
 
             // stop the marker until the correct input is pressed
             waitingForInput = true;
-
-            // choose the button required for this QTE
-            GenerateQTE();
         }
     }
     
@@ -70,6 +72,9 @@ public class ResurrectionRitual : MonoBehaviour
         // prevents the same ritual from starting multiple times
         if (ritualActive)
             return;
+        
+        // hide the button prompt while the marker is moving
+        QTEPrompt.gameObject.SetActive(false);
         
         // counts the QTE points inside this sigil
         totalStages = ritualPoints.childCount;
@@ -94,6 +99,8 @@ public class ResurrectionRitual : MonoBehaviour
         // Point2 is the first destination
         targetPointIndex = 1;
         
+        GenerateQTE();
+        
         // Debug.Log("Resurrection ritual started!");
     }
     
@@ -112,19 +119,22 @@ public class ResurrectionRitual : MonoBehaviour
         // chooses a button randomly from the list
         currentQTEKey = possibleKeys[Random.Range(0, possibleKeys.Length)];
 
-        Debug.Log("QTE: Press " + currentQTEKey);
+        // Debug.Log("QTE: Press " + currentQTEKey);
+        // Display the right button on screen
+        QTEPrompt.text = currentQTEKey.ToString();
+        QTEPrompt.gameObject.SetActive(true);
     }
     
     
     private void CompletePoint()
     {
+        waitingForInput = false;
+        
         Debug.Log(
             "Ritual point " +
             (targetPointIndex + 1) +
             " completed!"
         );
-
-        waitingForInput = false;
 
         // if the marker has returned to Point1, the full sigil is complete
         if (targetPointIndex == 0)
@@ -133,7 +143,7 @@ public class ResurrectionRitual : MonoBehaviour
             return;
         }
 
-        // move to the next ritual point.
+        // move to the next ritual point
         targetPointIndex++;
 
         // after reaching the final point, loop back to Point1
@@ -141,6 +151,8 @@ public class ResurrectionRitual : MonoBehaviour
         {
             targetPointIndex = 0;
         }
+        
+        GenerateQTE();
     }
 
     
@@ -148,9 +160,18 @@ public class ResurrectionRitual : MonoBehaviour
     {
         ritualActive = false;
         waitingForInput = false;
-        corpseState.Resurrect();
         
         ritualCanvas.SetActive(false);
-        Debug.Log("RESURRECTION SUCCESSFUL!");
+        
+        // temp
+        string[] dialogue =
+        {
+            "Necromancer: Rise...",
+            "Undead: What have you done to me?",
+            "Necromancer: I need your help getting out of here."
+        };
+        
+        // CorpseState.Resurrect will only run once the conversation ends.
+        dialogueManager.StartDialogue(dialogue, corpseState.Resurrect);
     }
 }

@@ -10,7 +10,19 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab29155b-503b-48b0-894d-62740267c2f4" name="Changes" comment="" />
+    <list default="true" id="ab29155b-503b-48b0-894d-62740267c2f4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CorpseRaiser/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CorpseRaiser/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/New Material.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/New Material.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level01.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level01.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level01/NavMesh-Navigation.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level01/NavMesh-Navigation.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterControlManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterControlManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CorpseInteraction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CorpseInteraction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CorpseState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CorpseState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ResurrectionRitual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ResurrectionRitual.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,66 +34,67 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CharacterControlManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CorpseInteraction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/RessurectionRitual.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GuardKey.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerInventory.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.446720861196927E-16" />
-      <entry key="MS500" value="7.551640431428815E-4" />
-      <entry key="S2" value="0.2045651427083806" />
-      <entry key="S5" value="0.9413212862940505" />
-      <entry key="S10" value="1.9965997332167977" />
-      <entry key="S30" value="5.2270898075078716" />
-      <entry key="S60" value="9.476889952013407" />
-      <entry key="M2" value="14.482896858919597" />
-      <entry key="M5" value="19.670529090828072" />
-      <entry key="M10" value="22.06539005187742" />
-      <entry key="M15" value="22.98256801456886" />
-      <entry key="M30" value="24.686878315933598" />
-      <entry key="H1" value="31.406890854773597" />
-      <entry key="H2" value="46.22455873136821" />
-      <entry key="H4" value="62.78102503932997" />
-      <entry key="D1" value="85.90503720900973" />
-      <entry key="W1" value="91.09337644688144" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0000000242428717" />
+      <entry key="S60" value="1.000558294899697" />
+      <entry key="M2" value="1.0850817159477224" />
+      <entry key="M5" value="2.747222338719725" />
+      <entry key="M10" value="6.789056513543262" />
+      <entry key="M15" value="12.881661758245171" />
+      <entry key="M30" value="37.9246945833232" />
+      <entry key="H1" value="78.99069265150304" />
+      <entry key="H2" value="125.2578547376306" />
+      <entry key="H4" value="166.99444053620365" />
+      <entry key="D1" value="223.0636747362583" />
+      <entry key="W1" value="235.76979015879058" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0000001167559978" />
-      <entry key="MS500" value="1.0410634883484178" />
-      <entry key="S2" value="1.4501569503756064" />
-      <entry key="S5" value="1.7266937247461285" />
-      <entry key="S10" value="1.8567211001719248" />
-      <entry key="S30" value="2.2034462944206883" />
-      <entry key="S60" value="2.6875058161971443" />
-      <entry key="M2" value="3.1812580990015586" />
-      <entry key="M5" value="3.6219677776004198" />
-      <entry key="M10" value="3.8013885673892736" />
-      <entry key="M15" value="3.867101874064413" />
-      <entry key="M30" value="4.046669127173578" />
-      <entry key="H1" value="4.913576664079687" />
-      <entry key="H2" value="6.726219944015731" />
-      <entry key="H4" value="8.67123769851837" />
-      <entry key="D1" value="11.313522462646517" />
-      <entry key="W1" value="11.89810588201842" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="5.433219560973656E-128" />
+      <entry key="S5" value="1.2529363906545947E-51" />
+      <entry key="S10" value="3.85879556082822E-26" />
+      <entry key="S30" value="4.7747490277183955E-9" />
+      <entry key="S60" value="9.593972153913727E-5" />
+      <entry key="M2" value="0.013786368331194123" />
+      <entry key="M5" value="0.2748967807922141" />
+      <entry key="M10" value="0.980578062269102" />
+      <entry key="M15" value="2.2432007357610417" />
+      <entry key="M30" value="7.705878752857538" />
+      <entry key="H1" value="16.442208789744747" />
+      <entry key="H2" value="25.45882697704266" />
+      <entry key="H4" value="32.78063467216107" />
+      <entry key="D1" value="41.73716518347512" />
+      <entry key="W1" value="43.664826412574364" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0026680473866215236" />
-      <entry key="MS500" value="0.31208302344221883" />
-      <entry key="S2" value="1.1562879987590626" />
-      <entry key="S5" value="2.3087386089467823" />
-      <entry key="S10" value="3.5984515737680915" />
-      <entry key="S30" value="7.280988463856964" />
-      <entry key="S60" value="12.05649594388811" />
-      <entry key="M2" value="17.593552499032768" />
-      <entry key="M5" value="23.257856767459096" />
-      <entry key="M10" value="25.848002654986885" />
-      <entry key="M15" value="26.836778792065548" />
-      <entry key="M30" value="28.726756445813106" />
-      <entry key="H1" value="36.31645595959453" />
-      <entry key="H2" value="52.94813172766528" />
-      <entry key="H4" value="71.45059052733129" />
-      <entry key="D1" value="97.21820107075358" />
-      <entry key="W1" value="102.99142855845497" />
+      <entry key="MS100" value="1.421793928794501E-4" />
+      <entry key="MS500" value="0.17004635655074438" />
+      <entry key="S2" value="0.6421579044947128" />
+      <entry key="S5" value="0.8376386980764787" />
+      <entry key="S10" value="0.915226036603242" />
+      <entry key="S30" value="0.970903652605218" />
+      <entry key="S60" value="0.9859929159294709" />
+      <entry key="M2" value="1.0910796523666695" />
+      <entry key="M5" value="3.015624359047057" />
+      <entry key="M10" value="7.762492468627351" />
+      <entry key="M15" value="15.116571059956602" />
+      <entry key="M30" value="45.61959417347039" />
+      <entry key="H1" value="95.42201731984404" />
+      <entry key="H2" value="150.70839777927378" />
+      <entry key="H4" value="199.7697487235525" />
+      <entry key="D1" value="264.7997046581826" />
+      <entry key="W1" value="279.43444667157513" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -92,26 +105,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.85f2\Editor\Unity.exe" />

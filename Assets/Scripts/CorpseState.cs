@@ -6,6 +6,7 @@ public class CorpseState : MonoBehaviour
     private PlayerMovement playerMovement;
     private CharacterControlManager controlManager;
 
+    
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();

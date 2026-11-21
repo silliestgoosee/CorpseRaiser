@@ -6,13 +6,17 @@ public class PlayerMovement : MonoBehaviour
 {
     // controls the character's navigation and pathfinding
     private NavMeshAgent agent;
-    
     private Camera mainCamera;
+    
+    [SerializeField] private GameObject moveMarker;
+    [SerializeField] private LayerMask movementBlockingLayers;
+    
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         mainCamera = Camera.main;
+        moveMarker.SetActive(false);
     }
 
     void Update()
@@ -35,6 +39,24 @@ public class PlayerMovement : MonoBehaviour
                 {
                     // if something else was clicked, move towards that position
                     agent.SetDestination(hit.point);
+                    
+                    // move the destination marker to where the mouse clicked
+                    moveMarker.SetActive(true);
+                    moveMarker.transform.position = hit.point;
+                }
+            }
+        }
+        
+        // has the char finished calculating the path
+        if (!agent.pathPending)
+        {
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                // has the character stopped moving
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                {
+                    // hide the marker after movement stops
+                    moveMarker.SetActive(false);
                 }
             }
         }

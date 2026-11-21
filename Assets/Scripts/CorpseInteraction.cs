@@ -3,9 +3,9 @@ using UnityEngine.InputSystem;
 
 public class CorpseInteraction : MonoBehaviour
 {
-    // how close the Necromancer needs to be to interact
     [SerializeField] private float interactionRange = 2f;
     
+    private CharacterControlManager controlManager;
     private GameObject player;
     private bool playerInRange = false;
     private ResurrectionRitual resurrectionRitual;
@@ -13,17 +13,8 @@ public class CorpseInteraction : MonoBehaviour
 
     void Start()
     {
+        controlManager = FindFirstObjectByType<CharacterControlManager>();
         player = GameObject.FindGameObjectWithTag("Player");
-
-        // Check whether the Necromancer was successfully found.
-        if (player != null)
-        {
-            Debug.Log("Player found: " + player.name);
-        }
-        else
-        {
-            Debug.LogError("No GameObject with the Player tag was found!");
-        }
 
         // gets the ResurrectionRitual attached to corpse
         resurrectionRitual = GetComponent<ResurrectionRitual>();
@@ -42,10 +33,9 @@ public class CorpseInteraction : MonoBehaviour
         
         playerInRange = distance <= interactionRange;
 
-        // if in range close and E is pressed, begin the interaction
-        if (playerInRange && Keyboard.current.eKey.wasPressedThisFrame)
+        // if the NECROMANCER is in range and E is pressed, begin the interaction
+        if (playerInRange &&  controlManager.IsControllingNecromancer() && Keyboard.current.eKey.wasPressedThisFrame)
         {
-            Debug.Log("E pressed while in range!");
             resurrectionRitual.StartRitual();
         }
     }
