@@ -11,7 +11,8 @@ public class DialogueManager : MonoBehaviour
     private string[] currentLines;
     private int currentLine = 0;
     private Action onDialogueFinished;
-    private bool dialogueActive = false;
+
+    public bool isDialogueActive = false;
 
 
     void Start()
@@ -22,7 +23,8 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (!dialogueActive)
+        // only listen for dialogue input while dialogue is active
+        if (!isDialogueActive)
             return;
         
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
@@ -34,22 +36,21 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string[] lines, Action finishedAction)
     {
-        Debug.Log("Starting Dialogue");
-        
         currentLines = lines;
         currentLine = 0;
         
         onDialogueFinished = finishedAction;
 
-        dialogueActive = true;
-        dialoguePanel.SetActive(true);
+        isDialogueActive = true;
         
+        dialoguePanel.SetActive(true);
         dialogueText.text = currentLines[currentLine];
     }
 
 
     private void NextLine()
     {
+        // go to the next line
         currentLine++;
 
         // check if there are any dialogue lines remaining
@@ -59,6 +60,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            // no lines remaining so finish the dialogue
             EndDialogue();
         }
     }
@@ -66,7 +68,7 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        dialogueActive = false;
+        isDialogueActive = false;
         dialoguePanel.SetActive(false);
         
         onDialogueFinished?.Invoke();

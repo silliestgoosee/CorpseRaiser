@@ -4,9 +4,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // controls the character's navigation and pathfinding
     private NavMeshAgent agent;
     private Camera mainCamera;
+    private DialogueManager dialogueManager;
     
     [SerializeField] private GameObject moveMarker;
     [SerializeField] private LayerMask movementBlockingLayers;
@@ -17,16 +17,21 @@ public class PlayerMovement : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         mainCamera = Camera.main;
         moveMarker.SetActive(false);
+        dialogueManager = FindFirstObjectByType<DialogueManager>();
     }
 
     void Update()
     {
+        // lock movement while dialogue is active
+        if(dialogueManager != null && dialogueManager.isDialogueActive)
+        {
+            return;
+        }
+        
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             // creates a ray from the camera through the mouse position
-            Ray ray = mainCamera.ScreenPointToRay(
-                Mouse.current.position.ReadValue()
-            );
+            Ray ray = mainCamera.ScreenPointToRay( Mouse.current.position.ReadValue());
 
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
